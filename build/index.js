@@ -24,7 +24,8 @@ const path = require('path');
 
     const outFiles = [
         fs.writeFile(path.join(__dirname, '..', 'dist', 'Riot-Token-CLI.ps1'), builtScriptText, 'utf8'),
-        fs.writeFile(path.join(__dirname, '..', 'dist', 'run.hta'), htaText, 'utf8')
+        fs.writeFile(path.join(__dirname, '..', 'dist', 'run.hta'), htaText, 'utf8'),
+        fs.writeFile(path.join(__dirname, '..', 'dist', 'index.html'), htaText, 'utf8')
     ];
     await Promise.all(outFiles);
 })();
