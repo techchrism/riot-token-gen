@@ -94,19 +94,28 @@ function New-Riot-Token
 }
 
 
-$username = Read-Host 'Enter Riot username'
-$password = Read-Host 'Enter Riot password' -AsSecureString
+try
+{
+    $username = Read-Host 'Enter Riot username'
+    $password = Read-Host 'Enter Riot password' -AsSecureString
 
-$tokenData = New-Riot-Token -Username $username -Password $password
+    $tokenData = New-Riot-Token -Username $username -Password $password
 
-Write-Host ''
-Write-Host 'Access Token:'
-Write-Host $tokenData.accessToken
-Write-Host ''
+    Write-Host ''
+    Write-Host 'Access Token:'
+    Write-Host $tokenData.accessToken
+    Write-Host ''
 
-Write-Host 'Entitlement:'
-Write-Host $tokenData.entitlement
-Write-Host ''
+    Write-Host 'Entitlement:'
+    Write-Host $tokenData.entitlement
+    Write-Host ''
 
-Write-Host "User ID: $($tokenData.userid)"
-Write-Host "Expires in $($tokenData.expiration) seconds"
+    Write-Host "User ID: $($tokenData.userid)"
+    Write-Host "Expires in $($tokenData.expiration) seconds"
+}
+catch
+{
+    Write-Error $_
+}
+
+Pause
